@@ -3,6 +3,9 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+use App\http\Controllers\contohController;
+use App\http\Controllers\SiswaController;
+use App\http\Controllers\BookController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -14,6 +17,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+
+// function
+// task 1
+// URL : http://localhost:8000/api/halo
+// METHOD : GET
+// exec : function
+// RETURN JSON => {"me": "Ganteng"}
+
+// Route::get('/halo',function(){
+//     return ["me" => "Ganteng"]; 
+// });
+Route::resource('siswa', SiswaController::class);
+Route::resource('coba', contohController::class);
+Route::resource('book', BookController::class);

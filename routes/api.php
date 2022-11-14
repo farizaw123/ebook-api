@@ -18,18 +18,18 @@ use App\Http\Controllers\AuthController;
 |
 */
 
+// Route::get('/halo', function(){
+//     return ["me" => "tamvan"];
+// });
+
+// Route::get('/helo', [heloController::class, 'index']);
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
-
-// Route::get('/halo', function(){
-//     return ["me" => "tamvan"];
-// });
-
-// Route::get('/helo', [heloController::class, 'index']);
 
 Route::get('/book', [BookController::class, 'index']);
 Route::get('/siswa', [SiswaController::class, 'index']);
@@ -38,6 +38,6 @@ Route::get('/book/{id}', [BookController::class, 'show']);
 
 Route::middleware('auth:sanctum')->group(function(){
     Route::resource('siswa', SiswaController::class)->except('create', 'edit', 'show', 'index');
-    Route::resource('book', BookController::class)->except('create', 'edit', 'show', 'index');
     Route::post('/logout', [AuthController::class, 'logout']);
+    Route::resource('book', BookController::class)->except('create', 'edit', 'show', 'index');
 });

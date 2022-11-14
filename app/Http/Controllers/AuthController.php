@@ -21,12 +21,15 @@ class AuthController extends Controller
             'email' => 'required|string|unique:users,email',
             'password' => 'required|string|confirmed|min:6'
         ]);
+
         $user = User::create([
             'name' => $fields['name'],
             'email' => $fields['email'],
             'password' => bcrypt($fields['password'])
         ]);
+
         $token = $user->createToken('tokenku')->plainTextToken;
+
         $response = [
             'user' => $user,
             'token' => $token
@@ -58,7 +61,7 @@ class AuthController extends Controller
     }
     public function logout(Request $request)
     {
-        $request->user()->curretAccessToken()->delete();
+        $request->user()->currentAccessToken()->delete();
         return [
             'message' => ' Logout success'
         ];

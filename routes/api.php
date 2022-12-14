@@ -34,7 +34,7 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::get('/book', [BookController::class, 'index']);
 Route::get('/siswa', [SiswaController::class, 'index']);
 Route::get('/siswa/{id}', [SiswaController::class, 'show']);
-Route::get('/book/{id}', [BookController::class, 'show']);
+Route::get('/books/{id}', [BookController::class, 'show']);
 
 Route::middleware('auth:sanctum')->group(function(){
     Route::resource('siswa', SiswaController::class)->except('create', 'edit', 'show', 'index');

@@ -9,4 +9,5 @@ class Book extends Model
 {
     use HasFactory;
     protected $fillable = ['title', 'description', 'author', 'publisher', 'date_of_issue'];
+    // baru push migration
 }
